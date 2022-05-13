@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "tips-component": "../../components/tips/tips"
+  }
 }

@@ -1,0 +1,26 @@
+/* components/tips/tips.wxss */
+.tips {
+  background-color: #ffffff;
+  width: 100vw;
+  border-radius: 40rpx 40rpx 0 0;
+  padding: 20rpx;
+  padding-left: 40px;
+  margin-top: 30rpx;
+}
+.tips_top {
+  display: flex;
+  align-items: center;
+}
+.tips_top_text {
+  font-size: 30rpx;
+  margin-left: 20rpx;
+}
+.tips_grid {
+  font-size: 24rpx;
+  color: rgba(00, 00, 00, 0.8);
+}
+.tips_grid_impo {
+  color: red;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+}
