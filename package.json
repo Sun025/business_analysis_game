@@ -1,0 +1,22 @@
+{
+  "name": "business_analysis_game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sun025/business_analysis_game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sun025/business_analysis_game/issues"
+  },
+  "homepage": "https://github.com/Sun025/business_analysis_game#readme",
+  "dependencies": {
+    "lin-ui": "^0.9.8"
+  }
+}
