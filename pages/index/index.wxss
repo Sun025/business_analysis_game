@@ -1,1 +1,21 @@
 /**index.wxss**/
+.container {
+  padding: 250rpx 0 200rpx 0;
+}
+.container-title {
+  font-size: 40rpx;
+}
+.popup {
+  background-color: #ffffff;
+  width: 400rpx;
+  height: 400rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+.prod {
+  font-size: 50rpx;
+  margin-bottom: 40rpx;
+}

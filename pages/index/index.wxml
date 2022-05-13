@@ -1,4 +1,11 @@
 <!--index.wxml-->
 <view class="container">
-  <tips-component></tips-component>
+  <text class="container-title">经营收益模拟</text>
+  <l-popup show="{{isShowPopup}}" locked="{{true}}">
+    <view class="popup">
+      <text class="prod">{{prod}}</text>
+      <l-button bind:lintap="handleToPlay">开始游戏</l-button>
+    </view>
+  </l-popup>
+  <l-button type="default" size="large" loading="{{isLoading}}" bind:lintap="handleGetProd">{{buttonText}}</l-button>
 </view>

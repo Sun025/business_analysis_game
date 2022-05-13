@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "tips-component": "../../components/tips/tips"
+    "tips-component": "../../components/tips/tips",
+    "l-button": "/miniprogram_npm/lin-ui/button/index",
+    "l-popup": "/miniprogram_npm/lin-ui/popup/index"
   }
 }
