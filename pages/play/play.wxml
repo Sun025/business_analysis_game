@@ -2,4 +2,19 @@
 <view class="play">
   <frist-tips></frist-tips>
   <tips></tips>
+  <view class="play_top">
+    <view class="play_top_day">第<text class="play_top_day_num">{{day}}</text>天</view>
+    <view class="play_top_input">
+      <input type="number" model:value="{{q_value}}" placeholder="请输入今日订购量" />
+      <l-button bind:lintap="handleComfirmQ">确定</l-button>
+    </view>
+  </view>
+  <l-popup show="{{isShowPopup}}" locked="{{true}}">
+    <view class="play_popup">
+      <text class="play_popup_item">炸鸡当日实际需求量：<text class="play_popup_num">{{D_value}}</text></text>
+      <text class="play_popup_item">当日收益：<text class="play_popup_num">{{day_income}}</text></text>
+      <text class="play_popup_item">总收益：<text class="play_popup_num">{{income}}</text></text>
+      <l-button bind:lintap="handleNextDay">开始下一日</l-button>
+    </view>
+  </l-popup>
 </view>

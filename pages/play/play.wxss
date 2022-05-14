@@ -2,4 +2,67 @@
 .play {
   background-color: #f8f9fa;
   height: 100vh;
+  position: relative;
+  padding-top: 230rpx;
+}
+.play_top {
+  width: 100%;
+  height: 150rpx;
+  background-color: #ffffff;
+  border-radius: 0 0 20rpx 20rpx;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 40rpx 0;
+}
+.play_top_day {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20rpx;
+}
+.play_top_day_num {
+  display: block;
+  text-align: center;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #ffffff;
+  background-color: #3963bc;
+  margin: 0 12rpx;
+  font-weight: bold;
+}
+.play_top_input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20rpx;
+}
+input {
+  width: 240rpx;
+  height: 68rpx;
+  border: 1px solid #3963bc;
+  border-radius: 15rpx;
+  margin-right: 30rpx;
+  font-size: 25rpx;
+  padding-left: 10rpx;
+  text-align: center;
+}
+.play_popup {
+  width: 600rpx;
+  height: 400rpx;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.play_popup_item {
+  margin-bottom: 25rpx;
+}
+.play_popup_num {
+  color: #3963bc;
+  font-weight: bold;
 }
