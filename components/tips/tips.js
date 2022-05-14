@@ -4,6 +4,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    day: {
+      type: Number,
+      value: 0
+    },
     list: {
       type: Array,
       value: [
@@ -38,6 +42,10 @@ Component({
       {
         name: '温度',
         value: 28
+      },
+      {
+        name: '当日需求量',
+        value: 100
       },
       {
         name: '7天订购量',

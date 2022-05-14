@@ -1,4 +1,6 @@
 // pages/play/play.js
+const app = getApp();
+
 Page({
 
   /**
@@ -11,13 +13,21 @@ Page({
     day_income: 0, // 当日收益
     income: 0, // 总收益
     prod: undefined, // 当前模拟的产品
-    isShowPopup: false
+    isShowPopup: false,
+    dataList: [],
+    q_7day_value: 0, //7天的订购量
   },
 
   handleComfirmQ() {
-    const { q_value, D_value } = this.data;
-    if(q_value > 0) {
+    const {
+      q_value,
+      D_value
+    } = this.data;
+    if (q_value > 0) {
       this.handleComputeIncome(q_value, D_value);
+      this.setData({
+        q_7day_value: this.data.q_7day_value + Number(q_value)
+      })
     } else {
       wx.showToast({
         title: '请输入订购量',
@@ -34,20 +44,33 @@ Page({
    * @param {*} D 实际需求量
    */
   handleComputeIncome(q, D) {
+    const {
+      day
+    } = this.data;
+    if (day == 8) {
+      this.setData({
+        income: 0
+      });
+    };
     const result = q >= D ? this.handleLeftCompute() : this.handleRightCompute();
     this.setData({
       day_income: result,
       income: this.data.income + result,
       isShowPopup: true
     });
+
   },
 
   /**
    * q >= D时收益
    */
   handleLeftCompute() {
-    const { prod, D_value, q_value } = this.data;
-    switch(prod) {
+    const {
+      prod,
+      D_value,
+      q_value
+    } = this.data;
+    switch (prod) {
       case '炸鱿鱼圈':
         return 6 * D_value - 4 * (q_value - D_value);
       case '炸虾':
@@ -61,7 +84,9 @@ Page({
    * q < D时收益
    */
   handleRightCompute() {
-    const { q_value } = this.data;
+    const {
+      q_value
+    } = this.data;
     return 6 * q_value
   },
 
@@ -73,14 +98,118 @@ Page({
       isShowPopup: false,
       q_value: Number,
       day: this.data.day + 1
-    })
+    });
+    this.handleRequest();
+  },
+
+  /**
+   * 数据转换
+   * 将节假日、周末的数字化数据转换为文字
+   * @param {*} value 值
+   */
+  handleTransfromData(value) {
+    if (value == 0) {
+      return '否';
+    } else {
+      return '是';
+    };
+  },
+
+  handleRequest() {
+    const {
+      day,
+      day_income,
+      income,
+      q_7day_value
+    } = this.data;
+    app.onRequest({
+      index: day
+    }).then(res => {
+      const {
+        day,
+        holiday,
+        weekend,
+        wind,
+        cloud,
+        rain,
+        sun,
+        temperature,
+        chicken,
+        sleeve,
+        shrimp
+      } = res[0];
+      const {
+        dataList,
+        prod
+      } = this.data;
+      let food;
+      switch (prod) {
+        case '炸鱿鱼圈':
+          food = sleeve;
+          break;
+        case '炸虾':
+          food = shrimp;
+          break;
+        case '炸鸡':
+          food = chicken;
+          break;
+      };
+      if (this.data.day < 8) {
+        let newDataList = dataList;
+        newDataList.unshift([{
+          name: '星期',
+          value: day
+        }, {
+          name: '节假日',
+          value: this.handleTransfromData(holiday)
+        }, {
+          name: '周末',
+          value: this.handleTransfromData(weekend)
+        }, {
+          name: '风力',
+          value: wind
+        }, {
+          name: '云度',
+          value: cloud
+        }, {
+          name: '雨量',
+          value: rain
+        }, {
+          name: '阳光',
+          value: sun
+        }, {
+          name: '温度',
+          value: temperature
+        }, {
+          name: '当日需求量',
+          value: food
+        }, {
+          name: '7天订购量',
+          value: q_7day_value
+        }, {
+          name: '7天收益',
+          value: day_income
+        }, {
+          name: '总收益',
+          value: income
+        }]);
+        this.setData({
+          dataList: newDataList,
+        });
+      };
+      this.setData({
+        D_value: food
+      });
+    });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const { prod } = options;
+    const {
+      prod
+    } = options;
     this.setData({
       prod,
     });
@@ -88,9 +217,7 @@ Page({
       title: `当前产品：${prod}`,
     });
     // 发送Ajax请求去后台拿数据,此处先模拟
-    this.setData({
-      D_value: 6
-    })
+    this.handleRequest();
   },
 
   /**

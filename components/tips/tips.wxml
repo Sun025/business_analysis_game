@@ -2,7 +2,7 @@
 <view class="tips">
   <view class="tips_top">
     <l-icon name="time" size="30"></l-icon>
-    <text class="tips_top_text">第一天</text>
+    <text class="tips_top_text">第{{day}}天</text>
   </view>
   <l-grid row-num="4" show-border="{{true}}" l-class="tips_grid">
     <l-grid-item wx:for="{{list}}" wx:key="{{index}}" key="{{index}}" slot="{{index}}">
