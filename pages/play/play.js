@@ -5,12 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    q_value: undefined,
-    day: 1,
-    D_value: undefined,
+    q_value: undefined, // q值
+    day: 1, // 当前轮数
+    D_value: undefined, // D值（实际库存）
     day_income: 0, // 当日收益
     income: 0, // 总收益
-    prod: undefined,
+    prod: undefined, // 当前模拟的产品
     isShowPopup: false
   },
 

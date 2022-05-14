@@ -1,4 +1,6 @@
 // index.js
+const app = getApp();
+
 Page({
   data: {
     buttonText: '开始模拟',
@@ -50,5 +52,8 @@ Page({
    */
   handleRandomNum() {
     return parseInt(Math.random() * 3);
+  },
+
+  onLoad() {
   }
 })
