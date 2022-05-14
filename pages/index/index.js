@@ -39,7 +39,7 @@ Page({
    */
   handleToPlay() {
     wx.redirectTo({
-      url: '../play/play',
+      url: `../play/play?prod=${this.data.prod}`,
       complete: (res) => {
         clearTimeout(this.data.timer);
       },

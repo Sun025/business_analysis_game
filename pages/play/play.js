@@ -12,7 +12,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    const { prod } = options;
+    wx.setNavigationBarTitle({
+      title: `当前产品：${prod}`,
+    })
   },
 
   /**

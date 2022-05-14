@@ -4,7 +4,6 @@
   width: 100vw;
   border-radius: 40rpx 40rpx 0 0;
   padding: 20rpx;
-  padding-left: 40px;
   margin-top: 30rpx;
 }
 .tips_top {
@@ -20,7 +19,7 @@
   color: rgba(00, 00, 00, 0.8);
 }
 .tips_grid_impo {
-  color: red;
+  color: #3963bc;
   margin-top: 20rpx;
   font-size: 28rpx;
 }

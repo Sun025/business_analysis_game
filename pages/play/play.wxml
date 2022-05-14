@@ -1,4 +1,5 @@
 <!--Play页-->
 <view class="play">
   <frist-tips></frist-tips>
+  <tips></tips>
 </view>
