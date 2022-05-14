@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "frist-tips": "/components/first-tips/first-tips"
+  }
 }

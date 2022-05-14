@@ -1,0 +1,31 @@
+/* components/first-tips/first-tips.wxss */
+.first_tips {
+  padding: 40rpx;
+  background-color: #ffffff;
+  border-radius: 20rpx 20rpx 0 0;
+}
+.first_tips_title {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.first_tips_content {
+  border-top: 1px solid #f3f3f3;
+  padding: 40rpx 0;
+  display: flex;
+  flex-direction: column;
+}
+.first_tips_content:last-child {
+  padding-bottom: 0;
+}
+/* .first_tips_content:last-child {
+  border-bottom: 1px solid #f3f3f3;
+} */
+.first_tips_content_title {
+  font-size: 30rpx;
+}
+.first_tips_content_text {
+  font-size: 25rpx;
+  opacity: 0.6;
+  margin-top: 20rpx;
+}

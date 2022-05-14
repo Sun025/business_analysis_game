@@ -1,0 +1,8 @@
+<!--components/first-tips/first-tips.wxml-->
+<view class="first_tips">
+  <view class="first_tips_title">相关属性解释</view>
+  <view class="first_tips_content" wx:for="{{fristTips}}" wx:key="index">
+    <text class="first_tips_content_title">{{item.name}}</text>
+    <text class="first_tips_content_text">{{item.value}}</text>
+  </view>
+</view>

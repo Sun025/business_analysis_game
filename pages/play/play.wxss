@@ -1,1 +1,5 @@
 /* pages/play/play.wxss */
+.play {
+  background-color: #f8f9fa;
+  height: 100vh;
+}

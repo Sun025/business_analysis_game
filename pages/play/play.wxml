@@ -1,2 +1,4 @@
-<!--pages/play/play.wxml-->
-<text>pages/play/play.wxml</text>
+<!--Play页-->
+<view class="play">
+  <frist-tips></frist-tips>
+</view>
