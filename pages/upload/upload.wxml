@@ -3,7 +3,7 @@
   <view class="upload_tips">模拟结束，感谢参与！</view>
   <view class="upload_income">
     <text>您的实验总收益为</text>
-    <text class="upload_income_num">2223</text>
+    <text class="upload_income_num">{{income}}</text>
     <text class="upload_income_tips">实验总收益将按照100:1人民币发放奖励</text>
   </view>
   <view class="upload_form">
