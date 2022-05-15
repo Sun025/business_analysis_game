@@ -268,6 +268,26 @@ Page({
       value: temperature,
       show: 'show'
     }]);
+    // 28轮的时候刷新数组
+    if(this.data.day == 28) {
+      const { type_28later } = this.data;
+      let nameList = [];
+      if(type_28later == 2 || type_28later == 3) {
+        nameList = ['ERM算法推荐量', 'ERM算法总收益'];
+      };
+      if(type_28later == 4 || type_28later == 5) {
+        nameList = ['EAM算法推荐量', 'EAM算法总收益'];
+      };
+      newDataList = newDataList.map((el) => {
+        return el.map((el2) => {
+          const { name } = el2;
+          if(nameList.indexOf(name) != -1) {
+            el2.show = 'show';
+          };
+          return el2
+        })
+      }); 
+    };
     this.setData({
       dataList: newDataList,
       D_value: food,
