@@ -1,11 +1,21 @@
 <!--index.wxml-->
 <view class="container">
-  <text class="container-title">经营收益模拟</text>
+  <view class="title-warpper">
+    <text class="container-title">南京大学行为决策与控制实验中心</text>
+    <text class="container-title">餐厅经营模拟实验</text>
+    <text class="container-title">实验将依据决策绩效发放报酬</text>
+  </view>
+  <l-popup show="{{isShowPopupFrist}}" locked="{{true}}">
+    <view class="popup">
+      <text class="popup_frist">此实验包括7轮测试实验，40轮正式实验</text>
+      <l-button loading="{{isLoading}}" bind:lintap="handleGetProd">下一步</l-button>
+    </view>
+  </l-popup>
   <l-popup show="{{isShowPopup}}" locked="{{true}}">
     <view class="popup">
       <text class="prod">{{prod}}</text>
       <l-button bind:lintap="handleToPlay">开始订购</l-button>
     </view>
   </l-popup>
-  <l-button type="default" size="large" loading="{{isLoading}}" bind:lintap="handleGetProd">{{buttonText}}</l-button>
+  <l-button type="default" size="large" bind:lintap="handleStart">{{buttonText}}</l-button>
 </view>

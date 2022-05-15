@@ -4,16 +4,22 @@ const app = getApp();
 Page({
   data: {
     buttonText: '开始实验',
-    isLoading: false,
     prodList: [
       '炸鱿鱼圈',
       '炸虾',
       '炸鸡'
     ],
     prod: '',
+    isShowPopupFrist: false,
     isShowPopup: false,
     scend: 5,
     timer: null
+  },
+
+  handleStart() {
+    this.setData({
+      isShowPopupFrist: true
+    });
   },
 
   /**
@@ -21,7 +27,6 @@ Page({
    */
   handleGetProd() {
     this.setData({
-      buttonText: '匹配产品中...',
       isLoading: true
     });
     this.setData({

@@ -2,8 +2,14 @@
 .container {
   padding: 250rpx 0 200rpx 0;
 }
+.title-warpper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .container-title {
   font-size: 40rpx;
+  margin-bottom: 30rpx;
 }
 .popup {
   background-color: #ffffff;
@@ -15,6 +21,11 @@
   box-sizing: border-box;
   flex-direction: column;
   border-radius: 20rpx;
+}
+.popup_frist {
+  font-size: 30rpx;
+  text-align: center;
+  margin-bottom: 40rpx;
 }
 .prod {
   font-size: 50rpx;
