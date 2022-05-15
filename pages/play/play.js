@@ -8,6 +8,7 @@ Page({
    */
   data: {
     q_value: undefined, // q值
+    lastDay_q: 0, // 昨日订购量
     day: 1, // 当前轮数
     D_value: undefined, // D值（实际库存）
     day_income: 0, // 当日收益
@@ -26,7 +27,8 @@ Page({
     if (q_value > 0) {
       this.handleComputeIncome(q_value, D_value);
       this.setData({
-        q_7day_value: this.data.q_7day_value + Number(q_value)
+        q_7day_value: this.data.q_7day_value + Number(q_value),
+        lastDay_q: this.data.q_value
       })
     } else {
       wx.showToast({
@@ -48,17 +50,32 @@ Page({
       day
     } = this.data;
     if (day == 8) {
+      wx.showModal({
+        confirmColor: 'confirmColor',
+        confirmText: '确认',
+        content: '7轮试完已结束，前几轮获取的累积收益已清0，本轮开始正式游戏。',
+        showCancel: false,
+        title: '提示',
+        success: () => {
+          this.setData({
+            income: 0
+          });
+          const result = q >= D ? this.handleLeftCompute() : this.handleRightCompute();
+          this.setData({
+            day_income: result,
+            income: this.data.income + result,
+            isShowPopup: true
+          });
+        },
+      })
+    } else {
+      const result = q >= D ? this.handleLeftCompute() : this.handleRightCompute();
       this.setData({
-        income: 0
+        day_income: result,
+        income: this.data.income + result,
+        isShowPopup: true
       });
     };
-    const result = q >= D ? this.handleLeftCompute() : this.handleRightCompute();
-    this.setData({
-      day_income: result,
-      income: this.data.income + result,
-      isShowPopup: true
-    });
-
   },
 
   /**
@@ -118,9 +135,9 @@ Page({
   handleRequest() {
     const {
       day,
+      lastDay_q,
       day_income,
-      income,
-      q_7day_value
+      income
     } = this.data;
     app.onRequest({
       index: day
@@ -154,49 +171,51 @@ Page({
           food = chicken;
           break;
       };
-      if (this.data.day < 8) {
-        let newDataList = dataList;
-        newDataList.unshift([{
-          name: '星期',
-          value: day
-        }, {
-          name: '节假日',
-          value: this.handleTransfromData(holiday)
-        }, {
-          name: '周末',
-          value: this.handleTransfromData(weekend)
-        }, {
-          name: '风力',
-          value: wind
-        }, {
-          name: '云度',
-          value: cloud
-        }, {
-          name: '雨量',
-          value: rain
-        }, {
-          name: '阳光',
-          value: sun
-        }, {
-          name: '温度',
-          value: temperature
-        }, {
-          name: '当日需求量',
-          value: food
-        }, {
-          name: '7天订购量',
-          value: q_7day_value
-        }, {
-          name: '7天收益',
-          value: day_income
-        }, {
-          name: '总收益',
-          value: income
-        }]);
-        this.setData({
-          dataList: newDataList,
-        });
+      let newDataList = dataList;
+      if (this.data.day >= 8) {
+        newDataList.pop();
       };
+      newDataList.unshift([{
+        name: '当日实际需求量',
+        value: food
+      }, {
+        name: '前一日订购量',
+        value: lastDay_q
+      }, {
+        name: '前一日收益',
+        value: day_income
+      }, {
+        name: '当前总收益',
+        value: income
+      }, {
+        name: '星期',
+        value: day
+      }, {
+        name: '节假日',
+        value: this.handleTransfromData(holiday)
+      }, {
+        name: '周末',
+        value: this.handleTransfromData(weekend)
+      }, {
+        name: '风力',
+        value: wind
+      }, {
+        name: '云度',
+        value: cloud
+      }, {
+        name: '雨量',
+        value: rain
+      }, {
+        name: '阳光',
+        value: sun
+      }, {
+        name: '温度',
+        value: temperature
+      }]);
+      this.setData({
+        dataList: newDataList,
+      });
+
       this.setData({
         D_value: food
       });

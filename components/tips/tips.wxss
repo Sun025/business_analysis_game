@@ -2,9 +2,7 @@
 .tips {
   background-color: #ffffff;
   width: 100vw;
-  border-radius: 40rpx 40rpx 0 0;
   padding: 20rpx;
-  margin-top: 30rpx;
 }
 .tips_top {
   display: flex;

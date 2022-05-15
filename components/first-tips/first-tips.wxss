@@ -3,6 +3,7 @@
   padding: 40rpx;
   background-color: #ffffff;
   border-radius: 20rpx 20rpx 0 0;
+  margin-bottom: 40rpx;
 }
 .first_tips_title {
   font-size: 30rpx;

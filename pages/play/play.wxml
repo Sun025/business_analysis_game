@@ -1,7 +1,8 @@
 <!--Play页-->
 <view class="play">
   <frist-tips wx:if="{{day < 2}}"></frist-tips>
-  <tips wx:for="{{dataList}}" wx:key="{{index}}" list="{{item}}" day="{{dataList.length - index}}"></tips>
+  <text class="play_tips_text">最近7日参考数据</text>
+  <tips wx:for="{{dataList}}" wx:key="{{index}}" list="{{item}}" day="{{index}}"></tips>
   <view class="play_top">
     <view class="play_top_day">第<text class="play_top_day_num">{{day}}</text>天</view>
     <view class="play_top_input">

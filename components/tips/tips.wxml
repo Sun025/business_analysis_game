@@ -2,12 +2,13 @@
 <view class="tips">
   <view class="tips_top">
     <l-icon name="time" size="30"></l-icon>
-    <text class="tips_top_text">第{{day}}天</text>
+    <text class="tips_top_text" wx:if="{{day == 0}}">今日</text>
+    <text class="tips_top_text" wx:else>前{{day}}天</text>
   </view>
-  <l-grid row-num="4" show-border="{{true}}" l-class="tips_grid">
+  <l-grid row-num="3" show-border="{{true}}" l-class="tips_grid">
     <l-grid-item wx:for="{{list}}" wx:key="{{index}}" key="{{index}}" slot="{{index}}">
       <text>{{item.name}}</text>
-      <text class="tips_grid_impo">{{item.value}}</text>
+      <text class="tips_grid_impo">{{item.name == '当日实际需求量' && day == 0 ? 0 : item.value}}</text>
     </l-grid-item>
   </l-grid>
 </view>
