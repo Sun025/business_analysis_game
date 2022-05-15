@@ -6,7 +6,7 @@
     <text class="tips_top_text" wx:else>前{{day}}天</text>
   </view>
   <l-grid row-num="3" show-border="{{true}}" l-class="tips_grid">
-    <l-grid-item wx:for="{{list}}" wx:key="{{index}}" key="{{index}}" slot="{{index}}">
+    <l-grid-item wx:for="{{list}}" wx:key="{{index}}" key="{{index}}" slot="{{index}}" wx:if="{{item.show == 'show' ? true : false}}">
       <text>{{item.name}}</text>
       <text class="tips_grid_impo">{{item.name == '当日实际需求量' && day == 0 ? 0 : item.value}}</text>
     </l-grid-item>

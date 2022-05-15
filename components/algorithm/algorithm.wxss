@@ -1,0 +1,15 @@
+/* components/algorithm/algorithm.wxss */
+.algorithm {
+  background-color: #ffffff;
+  padding: 40rpx;
+  margin-bottom: 20rpx;
+}
+.algorithm_title {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.algorithm_items {
+  font-size: 25rpx;
+  opacity: 0.6;
+}

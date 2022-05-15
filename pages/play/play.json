@@ -3,6 +3,7 @@
     "frist-tips": "/components/first-tips/first-tips",
     "tips": "/components/tips/tips",
     "l-button": "/miniprogram_npm/lin-ui/button/index",
-    "l-popup": "/miniprogram_npm/lin-ui/popup/index"
+    "l-popup": "/miniprogram_npm/lin-ui/popup/index",
+    "algorithm-component": "/components/algorithm/algorithm"
   }
 }

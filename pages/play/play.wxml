@@ -1,6 +1,7 @@
 <!--Play页-->
 <view class="play">
   <frist-tips wx:if="{{day < 2}}"></frist-tips>
+  <algorithm-component wx:if="{{type_28later == 3 || type_28later == 5}}" algorithmType="{{type_28later}}"></algorithm-component>
   <text class="play_tips_text">最近7日参考数据</text>
   <tips wx:for="{{dataList}}" wx:key="{{index}}" list="{{item}}" day="{{index}}"></tips>
   <view class="play_top">
@@ -14,6 +15,8 @@
     <view class="play_popup">
       <text class="play_popup_item">炸鸡当日实际需求量：<text class="play_popup_num">{{D_value}}</text></text>
       <text class="play_popup_item">当日收益：<text class="play_popup_num">{{day_income}}</text></text>
+      <text class="play_popup_item" wx:if="{{day >= 28 && (type_28later == 2 || type_28later == 3)}}">当日算法收益：<text class="play_popup_num">{{day_income_erm}}</text></text>
+      <text class="play_popup_item" wx:if="{{day >= 28 && (type_28later == 4 || type_28later == 5)}}">当日算法收益：<text class="play_popup_num">{{day_income_eam}}</text></text>
       <text class="play_popup_item">总收益：<text class="play_popup_num">{{income}}</text></text>
       <l-button bind:lintap="handleNextDay">开始下一日</l-button>
     </view>
