@@ -13,7 +13,7 @@
   </view>
   <l-popup show="{{isShowPopup}}" locked="{{true}}">
     <view class="play_popup">
-      <text class="play_popup_item">炸鸡当日实际需求量：<text class="play_popup_num">{{D_value}}</text></text>
+      <text class="play_popup_item">{{prod}}当日实际需求量：<text class="play_popup_num">{{D_value}}</text></text>
       <text class="play_popup_item">当日收益：<text class="play_popup_num">{{day_income}}</text></text>
       <text class="play_popup_item" wx:if="{{day >= 28 && (type_28later == 2 || type_28later == 3)}}">当日算法收益：<text class="play_popup_num">{{day_income_erm}}</text></text>
       <text class="play_popup_item" wx:if="{{day >= 28 && (type_28later == 4 || type_28later == 5)}}">当日算法收益：<text class="play_popup_num">{{day_income_eam}}</text></text>

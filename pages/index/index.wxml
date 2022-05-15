@@ -4,7 +4,7 @@
   <l-popup show="{{isShowPopup}}" locked="{{true}}">
     <view class="popup">
       <text class="prod">{{prod}}</text>
-      <l-button bind:lintap="handleToPlay">开始游戏</l-button>
+      <l-button bind:lintap="handleToPlay">开始订购</l-button>
     </view>
   </l-popup>
   <l-button type="default" size="large" loading="{{isLoading}}" bind:lintap="handleGetProd">{{buttonText}}</l-button>

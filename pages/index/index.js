@@ -3,7 +3,7 @@ const app = getApp();
 
 Page({
   data: {
-    buttonText: '开始模拟',
+    buttonText: '开始实验',
     isLoading: false,
     prodList: [
       '炸鱿鱼圈',
