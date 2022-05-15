@@ -29,14 +29,12 @@ Page({
     const { q_value, q_value_erm, q_value_eam, D_value}  = this.data;
     if(q_value > 0) {
       const { day } = this.data;
-      console.log(q_value, q_value_erm, q_value_eam);
       // 用户输入的q值收益
       const result = this.handleComputeIncome(q_value, D_value);
       // ERM算法的q值收益
       const result_ERM = this.handleComputeIncome(q_value_erm, D_value);
       // EAM算法的q值收益
       const result_EAM = this.handleComputeIncome(q_value_eam, D_value);
-      console.log(result, result_ERM, result_EAM);
       if(day == 8) {
         wx.showModal({
           confirmText: '确认',
@@ -120,15 +118,26 @@ Page({
    * 开始下一轮
    */
   handleNextDay() {
-    this.setData({
-      isShowPopup: false,
-      q_value: Number,
-      day: this.data.day + 1
-    });
-    if(this.data.day == 28) {
-      this.handleSetType28later();
-    };
-    this.handleRequest();
+    const { day, income, type_28later } = this.data;
+    if(day < 47) {
+      this.setData({
+        isShowPopup: false,
+        q_value: Number,
+        day: this.data.day + 1
+      });
+      if(this.data.day == 28) {
+        this.handleSetType28later();
+      };
+      this.handleRequest();
+    } else {
+      wx.redirectTo({
+        url: `../upload/upload?incom=${income}&type=${type_28later}`,
+        success: (res) => {},
+        fail: (res) => {},
+        complete: (res) => {},
+      })
+    }
+    
   },
 
   /**

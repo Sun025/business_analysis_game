@@ -1,0 +1,51 @@
+/* pages/upload/upload.wxss */
+.upload {
+  padding:50rpx 40rpx;
+  font-size: 30rpx;
+  box-sizing: border-box;
+}
+.upload_tips {
+  text-align: center;
+}
+.upload_income {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 200rpx;
+  margin: 80rpx 0 40rpx;
+}
+.upload_income_num {
+  font-size: 50rpx;
+  font-weight: bold;
+  color: #3963bc;
+}
+.upload_income_tips {
+  font-size: 20rpx;
+  opacity: 0.6;
+}
+.upload_form {
+  margin-top: 100rpx;
+}
+.upload_form_content {
+  padding: 20rpx 0;
+}
+.upload_form_content_item {
+  margin-bottom: 30rpx;
+}
+input {
+  border-bottom: 1px solid #f3f3f3;
+  margin-left: 40rpx;
+}
+.upload_form_content_radio {
+  display: flex;
+}
+radio-group {
+  margin-top: 20rpx;
+}
+radio {
+    margin-right: 30rpx;
+}
+.upload_form_content_button {
+  text-align: center;
+}

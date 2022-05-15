@@ -1,0 +1,40 @@
+<!--pages/upload/upload.wxml-->
+<view class="upload">
+  <view class="upload_tips">模拟结束，感谢参与！</view>
+  <view class="upload_income">
+    <text>您的实验总收益为</text>
+    <text class="upload_income_num">2223</text>
+    <text class="upload_income_tips">实验总收益将按照100:1人民币发放奖励</text>
+  </view>
+  <view class="upload_form">
+    <text class="ipload_form_heade">收款信息：</text>
+    <view class="upload_form_content">
+      <view class="upload_form_content_item">
+        <label for="sex">性别</label>
+        <radio-group id="sex" bindchange="radioChange">
+          <radio value="男" color="#3963bc">男</radio>
+          <radio value="女" color="#3963bc">女</radio>
+        </radio-group>
+      </view>
+      <view class="upload_form_content_item">
+        <label for="age">年龄</label>
+        <input type="number" name="" id="age" model:value="{{age}}"/>
+      </view>
+      <view class="upload_form_content_item">
+        <label for="age">工作</label>
+        <input type="text" name="" id="job" model:value="{{job}}"/>
+      </view>
+      <view class="upload_form_content_item">
+        <label for="alipay">支付宝账号</label>
+        <input type="text" name="" id="alipay" model:value="{{alipay}}"/>
+      </view>
+      <view class="upload_form_content_item">
+        <label for="lastName">姓氏</label>
+        <input type="text" name="" id="lastName" model:value="{{lastName}}"/>
+      </view>
+      <view class="upload_form_content_item upload_form_content_button">
+        <l-button size="medium" bind:lintap="onSubit">提交</l-button>
+      </view>
+    </view>
+  </view>
+</view>

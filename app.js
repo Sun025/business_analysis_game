@@ -11,6 +11,19 @@ App({
       });
     });
   },
+  onSaveUserInfo(info) {
+    const db = wx.cloud.database();
+    const collection = db.collection('user_info');
+    return new Promise((resolve, reject) => {
+      collection.add({
+        data: info
+      }).then(res => {
+        resolve('success');
+      }).catch(err => {
+        reject('error');
+      });
+    });
+  },
 
   onLaunch() {
     wx.cloud.init({
