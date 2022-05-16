@@ -14,7 +14,7 @@ Component({
     fristTips: [
       {
         name: '风力',
-        value: '单位为风速（m/s）。0-1.6为软风，1.6-3.4为轻风，以此类推。'
+        value: '单位为风速（m/s）。'
       },
       {
         name: '云度',

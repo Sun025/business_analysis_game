@@ -1,5 +1,6 @@
 <!--Play页-->
 <view class="play">
+  <rule-component ruleList="{{rule_list}}"></rule-component>
   <frist-tips wx:if="{{day < 2}}"></frist-tips>
   <algorithm-component wx:if="{{type_28later == 3 || type_28later == 5}}" algorithmType="{{type_28later}}"></algorithm-component>
   <text class="play_tips_text">最近7日参考数据</text>

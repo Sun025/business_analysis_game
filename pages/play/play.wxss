@@ -2,7 +2,7 @@
 .play {
   background-color: #f8f9fa;
   position: relative;
-  padding-top: 270rpx;
+  padding-top: 250rpx;
 }
 .play_tips_text {
   display: block;

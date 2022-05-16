@@ -1,0 +1,19 @@
+/* 收益规则组件样式文件 */
+.rule_component {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 40rpx;
+  margin-bottom: 20rpx;
+  border-radius: 20rpx 20rpx 0 0;
+}
+.rule_component_title {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.rule_component_text {
+  font-size: 24rpx;
+  color: rgba(00, 00, 00, 0.8);
+  line-height: 40rpx;
+}

@@ -1,0 +1,5 @@
+<!--收益规则组件-->
+<view class="rule_component">
+  <text class="rule_component_title">收益计算规则</text>
+  <text class="rule_component_text" wx:for="{{ruleList}}" wx:key="{{index}}">{{item}}</text>
+</view>

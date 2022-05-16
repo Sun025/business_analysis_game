@@ -4,6 +4,7 @@
     "tips": "/components/tips/tips",
     "l-button": "/miniprogram_npm/lin-ui/button/index",
     "l-popup": "/miniprogram_npm/lin-ui/popup/index",
-    "algorithm-component": "/components/algorithm/algorithm"
+    "algorithm-component": "/components/algorithm/algorithm",
+    "rule-component": "/components/rule/index"
   }
 }

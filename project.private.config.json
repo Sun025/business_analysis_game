@@ -9,7 +9,7 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/prod/index",
+          "pathName": "pages/play/play",
           "query": "",
           "launchMode": "default",
           "scene": null

@@ -23,6 +23,7 @@ Page({
     isShowPopup: false,
     dataList: [], // 保存最近7天的数据
     type_28later: 0, // 27轮后随机分配的算法类型
+    rule_list: [], // 产品收益规则
   },
 
   handleComfirmQ() {
@@ -295,6 +296,26 @@ Page({
       q_value_eam: food_EAM
     })
   },
+
+  handleGetRuleList(prod) {
+    switch(prod) {
+      case '炸鸡':
+        return [
+          '若订购量q≥需求量D，实验收益为6D-2(q-D);',
+          '若订购量q＜需求量D，实验收益为6q;'
+        ];
+      case '炸虾':
+        return [
+          '若订购量q≥需求量D，实验收益为6D-3(q-D);',
+          '若订购量q＜需求量D，实验收益为6q;'
+        ];
+      case '炸鱿鱼圈':
+        return [
+          '若订购量q≥需求量D，实验收益为6D-4(q-D);',
+          '若订购量q＜需求量D，实验收益为6q;'
+        ];
+    }
+  },
  
   /**
    * 生命周期函数--监听页面加载
@@ -305,6 +326,7 @@ Page({
     } = options;
     this.setData({
       prod,
+      rule_list: this.handleGetRuleList(prod)
     });
     wx.setNavigationBarTitle({
       title: `当前产品：${prod}`,
