@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    q_value: undefined, // q值
+    q_value: Number, // q值
     q_value_erm: 0, // ERM算法q值
     q_value_eam: 0, // EAM算法q值
     lastDay_q: 0, // 昨日订购量
@@ -27,9 +27,11 @@ Page({
   },
 
   handleComfirmQ() {
+    this.setData({
+      q_value: Number(this.data.q_value)
+    });
     const { q_value, q_value_erm, q_value_eam, D_value}  = this.data;
-    if(q_value > 0) {
-      const { day } = this.data;
+    if(q_value >= 0) {
       // 用户输入的q值收益
       const result = this.handleComputeIncome(q_value, D_value);
       // ERM算法的q值收益
@@ -109,15 +111,45 @@ Page({
         }
       });
     };
+    // 新增算法分配提示
+    if(this.data.day == 27) {
+      this.handleSetType28later().then(res => {
+        const { type_28later } = this.data;
+        if(type_28later > 1) {
+          let algorithm = '';
+          switch(type_28later) {
+            case 2:
+              algorithm = '你接下来的20轮实验将得到算法的辅助，算法的推荐订购量与算法的当前总收益将会向你展示。';
+              break;
+            case 3:
+              algorithm = `你接下来的20轮实验将得到算法的辅助，算法的推荐订购量与算法的当前总收益将会向你展示。
+              算法说明:算法通过学习历史属性，建立轮属性与实际订购量之间的关系，可以协助你对订购量做出预测。`;
+              break;
+            case 4:
+              algorithm = '你接下来的20轮实验将得到算法的辅助，算法的推荐订购量与算法的当前总收益将会向你展示。';
+              break;
+            case 5:
+              algorithm = `你接下来的20轮实验将得到算法的辅助，算法的推荐订购量与算法的当前总收益将会向你展示。
+              算法说明:算法通过学习历史需求，建立当天的需求量与前一天需求量之间的关系，可以协助你对订购量做出预测。`
+          } ;
+          wx.showModal({
+            confirmText: '确认',
+            content: algorithm,
+            showCancel: false,
+            title: '注意',
+            success: (result) => {},
+            fail: (res) => {},
+            complete: (res) => {},
+          });
+        };
+      });
+    }
     if(day < 47) {
       this.setData({
         isShowPopup: false,
         q_value: Number,
         day: this.data.day + 1
       });
-      if(this.data.day == 28) {
-        this.handleSetType28later();
-      };
       this.handleRequest();
     } else {
       wx.redirectTo({
@@ -144,9 +176,12 @@ Page({
   },
 
   handleSetType28later() {
-    const num = util.getRandom();
-    this.setData({
-      type_28later: num
+    return new Promise((resolve) => {
+      const num = util.getRandom();
+      this.setData({
+        type_28later: num
+      });
+      resolve();
     });
   },
   
@@ -168,7 +203,7 @@ Page({
    */
   handleUpdateList(res) {
     const {chicken, chicken_EAM, chicken_ERM, cloud, day, holiday, rain, shrimp, shrimp_EAM, shrimp_ERM, sleeve, sleeve_EAM, sleeve_ERM, sun, temperature, weekend, wind } = res;
-    const { lastDay_q, day_income, prod, dataList, income, income_erm, income_eam } = this.data;
+    const { q_value, lastDay_q, day_income, prod, dataList, income, income_erm, income_eam } = this.data;
     let food; // 从数据库中获取当前食物的实际需求量
     let food_ERM; // 从数据库中获取当前食物的ERM算法推荐q
     let food_EAM; // 从数据库中获取当前食物的EAM算法推荐q
@@ -194,15 +229,15 @@ Page({
       newDataList.pop();
     };
     newDataList.unshift([{
-      name: '当日实际需求量',
+      name: '当日需求量',
       value: food,
       show: 'show'
     }, {
-      name: '前一日订购量',
-      value: lastDay_q,
+      name: '当日订购量',
+      value: q_value,
       show: 'show'
     }, {
-      name: '前一日收益',
+      name: '当日收益',
       value: day_income,
       show: 'show'
     }, {
@@ -210,19 +245,19 @@ Page({
       value: income,
       show: 'show'
     },{
-      name: 'ERM算法推荐量',
+      name: 'A算法推荐量',
       value: food_ERM,
       show: this.data.day >= 28 && (this.data.type_28later == 2 || this.data.type_28later == 3) ? 'show' : 'noshow'
     },{
-      name: 'EAM算法推荐量',
+      name: 'B算法推荐量',
       value: food_EAM,
       show: this.data.day >= 28 && (this.data.type_28later == 4 || this.data.type_28later == 5) ? 'show' : 'noshow'
     },{
-      name: 'ERM算法总收益',
+      name: 'A算法总收益',
       value: income_erm,
       show: this.data.day >= 28 && (this.data.type_28later == 2 || this.data.type_28later == 3) ? 'show' : 'noshow'
     },{
-      name: 'EAM算法总收益',
+      name: 'B算法总收益',
       value: income_eam,
       show: this.data.day >= 28 && (this.data.type_28later == 4 || this.data.type_28later == 5) ? 'show' : 'noshow'
     },{
@@ -263,10 +298,10 @@ Page({
       const { type_28later } = this.data;
       let nameList = [];
       if(type_28later == 2 || type_28later == 3) {
-        nameList = ['ERM算法推荐量', 'ERM算法总收益'];
+        nameList = ['A算法推荐量', 'A算法总收益'];
       };
       if(type_28later == 4 || type_28later == 5) {
-        nameList = ['EAM算法推荐量', 'EAM算法总收益'];
+        nameList = ['B算法推荐量', 'B算法总收益'];
       };
       newDataList = newDataList.map((el) => {
         return el.map((el2) => {
@@ -283,7 +318,7 @@ Page({
       D_value: food,
       q_value_erm: food_ERM,
       q_value_eam: food_EAM
-    })
+    });
   },
 
   handleGetRuleList(prod) {

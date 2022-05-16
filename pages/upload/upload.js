@@ -6,12 +6,15 @@ Page({
    */
   data: {
     sex: '',
-    age: undefined,
+    age: '',
     job: '',
     alipay: '',
     lastName: '',
     income: 0,
     type: 0, //28轮之后的模拟类型
+    ageList: ['20岁以下', '20-29岁', '30-39', '40及以上'],
+    jobList: ['有', '无'],
+    sexList: ['男', '女']
   },
 
   radioChange(e) {
@@ -23,13 +26,34 @@ Page({
     })
   },
 
+  bindPickerChange(e) {
+    const { value } = e.detail;
+    this.setData({
+      age: value
+    });
+  },
+
+  bindPickerChangeJob(e) {
+    const { value } = e.detail;
+    this.setData({
+      job: value
+    });
+  },
+
+  bindPickerChangeSex(e) {
+    const { value } = e.detail;
+    this.setData({
+      sex: value
+    });
+  },
+
   onSubit() {
-    const { sex, age, job, alipay, lastName, income, type} = this.data;
+    const { sex, age, job, alipay, lastName, income, type, sexList, jobList, ageList} = this.data;
     if(sex && age && job && alipay && lastName) {
       const info = {
-        sex,
-        age,
-        job,
+        sex: sexList[sex],
+        age: ageList[age],
+        job: jobList[job],
         alipay,
         lastName,
         type,

@@ -10,19 +10,22 @@
     <text class="ipload_form_heade">收款信息：</text>
     <view class="upload_form_content">
       <view class="upload_form_content_item">
-        <label for="sex">性别</label>
-        <radio-group id="sex" bindchange="radioChange">
-          <radio value="男" color="#3963bc">男</radio>
-          <radio value="女" color="#3963bc">女</radio>
-        </radio-group>
+        <view class="upload_form_age">性别</view>
+        <picker bindchange="bindPickerChangeSex" mode="selector" range="{{sexList}}" value="{{index}}">
+          <view>请选择: {{sexList[sex]}}</view>
+        </picker>
       </view>
       <view class="upload_form_content_item">
-        <label for="age">年龄</label>
-        <input type="number" name="" id="age" model:value="{{age}}"/>
+        <view class="upload_form_age">年龄</view>
+        <picker bindchange="bindPickerChange" mode="selector" range="{{ageList}}" value="{{index}}">
+          <view>请选择: {{ageList[age]}}</view>
+        </picker>
       </view>
       <view class="upload_form_content_item">
-        <label for="age">工作</label>
-        <input type="text" name="" id="job" model:value="{{job}}"/>
+        <view class="upload_form_age">工作</view>
+        <picker bindchange="bindPickerChangeJob" mode="selector" range="{{jobList}}" value="{{index}}">
+          <view>请选择: {{jobList[job]}}</view>
+        </picker>
       </view>
       <view class="upload_form_content_item">
         <label for="alipay">支付宝账号</label>
