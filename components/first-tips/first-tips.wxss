@@ -9,6 +9,13 @@
   font-size: 30rpx;
   font-weight: bold;
   margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: column
+}
+.first_tips_title_tip {
+  font-size: 20rpx;
+  font-weight: normal;
+  opacity: 0.6;
 }
 .first_tips_content {
   border-top: 1px solid #f3f3f3;
@@ -19,9 +26,6 @@
 .first_tips_content:last-child {
   padding-bottom: 0;
 }
-/* .first_tips_content:last-child {
-  border-bottom: 1px solid #f3f3f3;
-} */
 .first_tips_content_title {
   font-size: 30rpx;
 }

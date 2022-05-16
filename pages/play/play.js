@@ -36,43 +36,16 @@ Page({
       const result_ERM = this.handleComputeIncome(q_value_erm, D_value);
       // EAM算法的q值收益
       const result_EAM = this.handleComputeIncome(q_value_eam, D_value);
-      if(day == 8) {
-        wx.showModal({
-          confirmText: '确认',
-          content: '前7轮为测试实验，获取的累积收益已清0，本轮开始正式计算收益。',
-          editable: true,
-          showCancel: false,
-          title: '提示',
-          success: () => {
-            this.setData({
-              income: 0,
-              income_erm: 0,
-              income_eam: 0,
-            });
-            this.setData({
-              income: this.data.income + result,
-              income_erm: this.data.income_erm + result_ERM,
-              income_eam: this.data.income_eam + result_EAM,
-              day_income: result,
-              day_income_erm: result_ERM,
-              day_income_eam: result_EAM,
-              lastDay_q: q_value,
-              isShowPopup: true
-            });
-          }
-        });
-      } else {
-        this.setData({
-          income: this.data.income + result,
-          income_erm: this.data.income_erm + result_ERM,
-          income_eam: this.data.income_eam + result_EAM,
-          day_income: result,
-          day_income_erm: result_ERM,
-          day_income_eam: result_EAM,
-          lastDay_q: q_value,
-          isShowPopup: true
-        })
-      };
+      this.setData({
+        income: this.data.income + result,
+        income_erm: this.data.income_erm + result_ERM,
+        income_eam: this.data.income_eam + result_EAM,
+        day_income: result,
+        day_income_erm: result_ERM,
+        day_income_eam: result_EAM,
+        lastDay_q: q_value,
+        isShowPopup: true
+      });
     } else {
       wx.showToast({
         title: '请输入订购量',
@@ -120,6 +93,22 @@ Page({
    */
   handleNextDay() {
     const { day, income, type_28later } = this.data;
+    //新增弹窗提示
+    if(day == 7) {
+      wx.showModal({
+        confirmText: '确认',
+        content: '前7轮为测试实验，获取的累积收益已清0，本轮开始正式计算收益。',
+        showCancel: false,
+        title: '注意',
+        success: () => {
+          this.setData({
+            income: 0,
+            income_erm: 0,
+            income_eam: 0,
+          });
+        }
+      });
+    };
     if(day < 47) {
       this.setData({
         isShowPopup: false,
