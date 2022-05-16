@@ -16,12 +16,6 @@ Page({
     timer: null
   },
 
-  handleStart() {
-    this.setData({
-      isShowPopupFrist: true
-    });
-  },
-
   /**
    * 获取模拟的产品
    */
@@ -34,7 +28,6 @@ Page({
         this.setData({
           isShowPopup: true,
           isLoading: false,
-          buttonText: '匹配成功',
           prod: this.data.prodList[this.handleRandomNum()]
         });
       }, 1500)
@@ -45,8 +38,9 @@ Page({
    * 进入模拟游戏页面
    */
   handleToPlay() {
+    const { prod } = this.data;
     wx.redirectTo({
-      url: `../play/play?prod=${this.data.prod}`,
+      url: `../prod/index?prod=${prod}`,
       complete: (res) => {
         clearTimeout(this.data.timer);
       },

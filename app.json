@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/prod/index",
     "pages/play/play",
     "pages/upload/upload"
   ],

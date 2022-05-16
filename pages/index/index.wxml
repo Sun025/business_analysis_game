@@ -1,21 +1,15 @@
 <!--index.wxml-->
 <view class="container">
   <view class="title-warpper">
+    <text class="title-warpper-p">这是一个关于餐厅订购决策的研究项目，你作为参与者，需要为这家餐厅的47天经营做订购决策。其中，第1-7天为预实验，供你熟悉实验界面；第8-47天为正式实验，你需要在当天需求实现之前，确定当天的订购量。</text>
+    <text class="title-warpper-p">你仅能参加一次，实验预计进行15分钟，预计报酬为15元，实际报酬依你的决策绩效。</text>
     <text class="container-title">南京大学行为决策与控制实验中心</text>
-    <text class="container-title">餐厅经营模拟实验</text>
-    <text class="container-title">实验将依据决策绩效发放报酬</text>
   </view>
-  <l-popup show="{{isShowPopupFrist}}" locked="{{true}}">
-    <view class="popup">
-      <text class="popup_frist">此实验包括7轮测试实验，40轮正式实验</text>
-      <l-button loading="{{isLoading}}" bind:lintap="handleGetProd">下一步</l-button>
-    </view>
-  </l-popup>
   <l-popup show="{{isShowPopup}}" locked="{{true}}">
     <view class="popup">
       <text class="prod">{{prod}}</text>
-      <l-button bind:lintap="handleToPlay">开始订购</l-button>
+      <l-button bind:lintap="handleToPlay">下一页</l-button>
     </view>
   </l-popup>
-  <l-button type="default" size="large" bind:lintap="handleStart">{{buttonText}}</l-button>
+  <l-button type="default" size="large" loading="{{isLoading}}" bind:lintap="handleGetProd">{{buttonText}}</l-button>
 </view>

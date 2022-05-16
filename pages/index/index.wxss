@@ -5,11 +5,15 @@
 .title-warpper {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  padding: 0 40rpx;
+}
+.title-warpper-p {
+  margin-bottom: 30rpx;
 }
 .container-title {
-  font-size: 40rpx;
-  margin-bottom: 30rpx;
+  text-align: right;
 }
 .popup {
   background-color: #ffffff;

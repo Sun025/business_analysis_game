@@ -1,0 +1,12 @@
+<!--产品实验收益计算规则说明页面-->
+<view class="page_prod">
+  <view class="page_prod_prodname">{{prod}}</view>
+  <view class="page_prod_title">实验收益计算规则</view>
+  <view class="page_prod_content">
+    <text wx:for="{{tips}}">{{item}}</text>
+  </view>
+  <view class="page_prod_bottom">
+    <l-button bind:lintap="onStart">确认</l-button>
+    <view class="page_prod_tips">点确认进入实验</view>
+  </view>
+</view>
