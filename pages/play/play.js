@@ -225,7 +225,7 @@ Page({
         break;
     };
     let newDataList = dataList;
-    if(this.data.day >= 8) {
+    if(this.data.day >= 9) {
       newDataList.pop();
     };
     newDataList.unshift([{
