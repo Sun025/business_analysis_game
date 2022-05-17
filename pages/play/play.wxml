@@ -5,6 +5,9 @@
   <algorithm-component wx:if="{{type_28later == 3 || type_28later == 5}}" algorithmType="{{type_28later}}"></algorithm-component>
   <text class="play_tips_text">最近7日参考数据<text wx:if="{{day > 1}}">(往下滑动查看更多参考数据)</text></text>
   <tips wx:for="{{dataList}}" wx:key="{{index}}" list="{{item}}" day="{{index}}"></tips>
+  <!-- <block wx:for="{{dataList}}" wx:key="{{index}}">
+    <tips  wx:if="{{index != 0}}" list="{{item}}" day="{{index}}"></tips>
+  </block> -->
   <view class="play_top">
     <view class="play_top_day">第<text class="play_top_day_num">{{day}}</text>天</view>
     <view class="play_top_input">

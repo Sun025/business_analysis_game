@@ -293,6 +293,67 @@ Page({
       value: temperature,
       show: 'show'
     }]);
+    if(this.data.day > 1) {
+      newDataList = newDataList.map((el, index) => {
+        if(index == 1) {
+          return el.map(el => {
+            const { name } = el;
+            if(name == '当日订购量') {
+              return {
+                name: '当日订购量',
+                value: lastDay_q,
+                show: 'show'
+              }
+            };
+            if(name == '当日收益') {
+              return {
+                name: '当日收益',
+                value: day_income,
+                show: 'show'
+              }
+            };
+            if(name == '当前总收益') {
+              return {
+                name: '当前总收益',
+                value: income,
+                show: 'show'
+              }
+            };
+            if(name == 'A算法推荐量') {
+              return {
+                name: 'A算法推荐量',
+                value: food_ERM,
+                show: this.data.day >= 28 && (this.data.type_28later == 2 || this.data.type_28later == 3) ? 'show' : 'noshow'
+              }
+            };
+            if(name == 'B算法推荐量') {
+              return {
+                name: 'B算法推荐量',
+                value: food_EAM,
+                show: this.data.day >= 28 && (this.data.type_28later == 4 || this.data.type_28later == 5) ? 'show' : 'noshow'
+              }
+            };
+            if(name == 'A算法总收益') {
+              return {
+                name: 'A算法总收益',
+                value: income_erm,
+                show: this.data.day >= 28 && (this.data.type_28later == 2 || this.data.type_28later == 3) ? 'show' : 'noshow'
+              }
+            };
+            if(name == 'B算法总收益') {
+              return {
+                name: 'B算法总收益',
+                value: income_eam,
+                show: this.data.day >= 28 && (this.data.type_28later == 4 || this.data.type_28later == 5) ? 'show' : 'noshow'
+              }
+            };
+            return el;
+          })
+        } else {
+          return el;
+        }
+      })
+    }
     // 28轮的时候刷新数组
     if(this.data.day == 28) {
       const { type_28later } = this.data;

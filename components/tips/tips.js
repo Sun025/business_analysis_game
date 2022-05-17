@@ -30,7 +30,7 @@ Component({
   },
   lifetimes: {
     attached() {
-      console.log(this.properties.list)
+      // console.log(this.properties.list)
     }
   }
 })
