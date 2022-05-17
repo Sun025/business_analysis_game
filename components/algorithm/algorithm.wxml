@@ -1,5 +1,5 @@
 <!--components/algorithm/algorithm.wxml-->
 <view class="algorithm">
-  <view class="algorithm_title">{{algorithmType == 3 ? list[0].name : list[1].name}}算法解释</view>
+  <view class="algorithm_title">算法解释</view>
   <view class="algorithm_items">{{algorithmType == 3 ? list[0].text : list[1].text}}</view>
 </view>

@@ -86,7 +86,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const {income, type} = options;
+    const {income, type, incomeList} = options;
+    console.log(JSON.parse(incomeList));
     this.setData({
       type,
       income,

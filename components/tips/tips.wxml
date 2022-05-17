@@ -8,7 +8,7 @@
   <l-grid row-num="3" show-border="{{true}}" l-class="tips_grid">
     <l-grid-item wx:for="{{list}}" wx:key="{{index}}" key="{{index}}" slot="{{index}}" wx:if="{{item.show == 'show' ? true : false}}">
       <text>{{item.name}}</text>
-      <text class="tips_grid_impo">{{(item.name == '当日需求量' || item.name == '当日订购量' || item.name == '当日收益' || item.name == '当前总收益') && day == 0 ? '未知' : item.value}}</text>
+      <text class="tips_grid_impo">{{(item.name == '当日需求量' || item.name == '当日订购量' || item.name == '当日收益' || item.name == '当前总收益' || item.name == 'A算法当日收益' || item.name == 'B算法当日收益') && day == 0 ? '未知' : item.value}}</text>
     </l-grid-item>
   </l-grid>
 </view>

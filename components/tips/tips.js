@@ -19,7 +19,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    // dataList: []
   },
 
   /**
@@ -31,6 +31,22 @@ Component({
   lifetimes: {
     attached() {
       // console.log(this.properties.list)
+    //   const { list } = this.properties;
+    //   const newList = list.map((el) => {
+    //     const {name, value, show} = el;
+    //     if(name.includes('A') || name.includes('B')) {
+    //       return {
+    //         name: name.replace(/A|B/, ''),
+    //         value,
+    //         show
+    //       }
+    //     } else {
+    //       return el;
+    //     }
+    //   });
+    //   this.setData({
+    //     dataList: newList
+    //   });
     }
   }
 })
