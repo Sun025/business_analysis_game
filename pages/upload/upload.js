@@ -83,19 +83,6 @@ Page({
         incomeList
       };
       app.onSaveUserInfo(info).then(res => {
-        // wx.showToast({
-        //   title: '提交成功!',
-        //   duration: 1000,
-        //   icon: 'success'
-        // }).then(res => {
-        //   this.setData({
-        //     sex: '',
-        //     age: '',
-        //     job: '',
-        //     alipay: '',
-        //     lastName: ''
-        //   })
-        // });
         wx.showModal({
           confirmText: '确认',
           content: '收款信息提交成功！退出本次实验。',
