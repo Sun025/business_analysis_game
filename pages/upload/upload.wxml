@@ -2,41 +2,42 @@
 <view class="upload">
   <view class="upload_tips">模拟结束，感谢参与！</view>
   <view class="upload_income">
-    <text>您的实验总收益为</text>
+    <text>您的现金奖励为</text>
     <text class="upload_income_num">{{income}}</text>
-    <text class="upload_income_tips">实验总收益将按照100:1人民币发放奖励</text>
+    <!-- <text class="upload_income_tips">实验总收益将按照100:1人民币发放奖励</text> -->
   </view>
   <view class="upload_form">
     <text class="ipload_form_heade">收款信息：</text>
     <view class="upload_form_content">
       <view class="upload_form_content_item">
-        <view class="upload_form_age">性别</view>
+        <view class="upload_form_age from_title">性别</view>
         <picker bindchange="bindPickerChangeSex" mode="selector" range="{{sexList}}" value="{{index}}">
           <view>请选择: {{sexList[sex]}}</view>
         </picker>
       </view>
       <view class="upload_form_content_item">
-        <view class="upload_form_age">年龄</view>
+        <view class="upload_form_age from_title">年龄</view>
         <picker bindchange="bindPickerChange" mode="selector" range="{{ageList}}" value="{{index}}">
           <view>请选择: {{ageList[age]}}</view>
         </picker>
       </view>
       <view class="upload_form_content_item">
-        <view class="upload_form_age">工作</view>
+        <view class="upload_form_age from_title">是否有工作经验</view>
         <picker bindchange="bindPickerChangeJob" mode="selector" range="{{jobList}}" value="{{index}}">
           <view>请选择: {{jobList[job]}}</view>
         </picker>
       </view>
       <view class="upload_form_content_item">
-        <label for="alipay">支付宝账号</label>
+        <view class="from_title">支付宝账号</view>
         <input type="text" name="" id="alipay" model:value="{{alipay}}"/>
       </view>
       <view class="upload_form_content_item">
-        <label for="lastName">姓氏</label>
+        <view class="from_title">姓氏</view>
         <input type="text" name="" id="lastName" model:value="{{lastName}}"/>
       </view>
       <view class="upload_form_content_item upload_form_content_button">
         <l-button size="medium" bind:lintap="onSubit">提交</l-button>
+        <text class="upload_income_tips">您的实验奖励将在3个工作日内发放，感谢参与</text> 
       </view>
     </view>
   </view>

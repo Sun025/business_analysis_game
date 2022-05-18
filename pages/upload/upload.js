@@ -14,7 +14,9 @@ Page({
     type: 0, //28轮之后的模拟类型
     ageList: ['20岁以下', '20-29岁', '30-39', '40及以上'],
     jobList: ['有', '无'],
-    sexList: ['男', '女']
+    sexList: ['男', '女'],
+    prod: '', // 实验的产品
+    incomeList: [], // 第8轮以后的每轮信息
   },
 
   radioChange(e) {
@@ -27,29 +29,48 @@ Page({
   },
 
   bindPickerChange(e) {
-    const { value } = e.detail;
+    const {
+      value
+    } = e.detail;
     this.setData({
       age: value
     });
   },
 
   bindPickerChangeJob(e) {
-    const { value } = e.detail;
+    const {
+      value
+    } = e.detail;
     this.setData({
       job: value
     });
   },
 
   bindPickerChangeSex(e) {
-    const { value } = e.detail;
+    const {
+      value
+    } = e.detail;
     this.setData({
       sex: value
     });
   },
 
   onSubit() {
-    const { sex, age, job, alipay, lastName, income, type, sexList, jobList, ageList} = this.data;
-    if(sex && age && job && alipay && lastName) {
+    const {
+      sex,
+      age,
+      job,
+      alipay,
+      lastName,
+      income,
+      type,
+      sexList,
+      jobList,
+      ageList,
+      prod,
+      incomeList
+    } = this.data;
+    if (sex && age && job && alipay && lastName) {
       const info = {
         sex: sexList[sex],
         age: ageList[age],
@@ -57,13 +78,33 @@ Page({
         alipay,
         lastName,
         type,
-        income: income / 100
+        income,
+        prod,
+        incomeList
       };
       app.onSaveUserInfo(info).then(res => {
-        wx.showToast({
-          title: '提交成功!',
-          duration: 1000,
-          icon: 'success',
+        // wx.showToast({
+        //   title: '提交成功!',
+        //   duration: 1000,
+        //   icon: 'success'
+        // }).then(res => {
+        //   this.setData({
+        //     sex: '',
+        //     age: '',
+        //     job: '',
+        //     alipay: '',
+        //     lastName: ''
+        //   })
+        // });
+        wx.showModal({
+          confirmText: '确认',
+          content: '收款信息提交成功！退出本次实验。',
+          showCancel: false,
+          title: '提示',
+          success: (result) => {
+            // 退出小程序
+            wx.exitMiniProgram();
+          },
         });
       }).catch(err => {
         wx.showToast({
@@ -86,12 +127,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const {income, type, incomeList} = options;
-    console.log(JSON.parse(incomeList));
-    this.setData({
-      type,
-      income,
-    })
+    try {
+      const {
+        income,
+        type,
+        incomeList,
+        prod
+      } = options;
+      let newIncome = Number(income);
+      if (newIncome < 0) {
+        newIncome = 0;
+      } else {
+        newIncome = (newIncome / app.onChangeMoney(prod)).toFixed(2);
+      };
+      this.setData({
+        type: Number(type),
+        income: Number(newIncome),
+        prod,
+        incomeList: JSON.parse(incomeList)
+      });
+    } catch (error) {
+      console.log('any error');
+    }
+
   },
 
   /**

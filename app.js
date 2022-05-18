@@ -1,5 +1,20 @@
 // app.js
 App({
+
+  /**
+   * 实验收益换算比例
+   */
+  onChangeMoney(prod) {
+    switch(prod) {
+      case '炸鱿鱼圈':
+        return 65;
+      case '炸虾':
+        return 175;
+      case '炸鸡':
+        return 450;
+    };
+  },
+
   onRequest(query) {
     const db = wx.cloud.database();
     const collection = db.collection('test_data');
