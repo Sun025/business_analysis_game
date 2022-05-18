@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/Sun025/business_analysis_game#readme",
   "dependencies": {
-    "lin-ui": "^0.9.8"
+    "lin-ui": "^0.9.9"
   }
 }
